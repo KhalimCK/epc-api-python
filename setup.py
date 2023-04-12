@@ -10,7 +10,7 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='epc_data_downloader',
+    name='downloader',
     version='0.1.0',
     description='Sample package for Python-Guide.org',
     long_description=readme,

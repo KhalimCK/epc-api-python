@@ -23,6 +23,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+bin/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -90,5 +91,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# Jetbrains files
+# Jetbrains/pycharm files
 .idea/
+pyvenv.cfg
