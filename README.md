@@ -6,8 +6,4 @@ Api docs can be found [here](https://epc.opendatacommunities.org/docs/api/domest
 
 # Getting started
 
-Setup `.env` file with variables requied as in `downloader/environment.py` and run
-
-``` source .env ```
-
-to load the environment
+TODO
