@@ -1,5 +1,6 @@
 init:
-	pip install -r requirements.txt
+	pip install -r requirements/prod.txt
 
 test:
-	nosetests tests
+	pip install -r requirements/test.txt
+	pytest tests/

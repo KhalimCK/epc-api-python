@@ -2,7 +2,7 @@ import os
 import downloader.exceptions as exceptions
 
 
-class EpcDownloader:
+class EpcClient:
     def __init__(self, auth_token=None, user_email=None):
         self._set_auth_token(auth_token)
 
