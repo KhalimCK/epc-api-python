@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/epc-data-exploration.iml" filepath="$PROJECT_DIR$/.idea/epc-data-exploration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../epc-data-downloader/.idea/epc-data-downloader.iml" filepath="$PROJECT_DIR$/../epc-data-downloader/.idea/epc-data-downloader.iml" />
     </modules>
   </component>
 </project>
