@@ -50,3 +50,7 @@ def test_successful_init():
     assert client.user_email is not None
     assert client.api_key is not None
     assert client.auth_token == expected_auth_token
+
+    # Check headers
+    assert isinstance(client.headers, dict)
+    assert set(client.headers.keys()) == {"Accept", "Authorization"}
