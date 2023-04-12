@@ -23,14 +23,14 @@ class EpcClient:
             self._create_auth_token()
 
         # For the moment, the only format we allow is .zip
-        self.accept = "application/zip"
+        self._accept = "application/zip"
 
         # Set up headers
         self._set_headers()
 
     def set_auth_token(self, auth_token):
         if not auth_token:
-            auth_token = os.getenv("EPC_USER_EMAIL")
+            auth_token = os.getenv("EPC_AUTH_TOKEN")
         self.auth_token = auth_token
 
     def _create_auth_token(self):
@@ -69,6 +69,6 @@ class EpcClient:
     def _set_headers(self):
         self.headers = {
             "Authorization": "Basic {auth_token}".format(auth_token=self.auth_token),
-            "Accept": self.accept
+            "Accept": self._accept
         }
 
