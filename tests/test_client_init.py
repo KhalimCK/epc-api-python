@@ -1,6 +1,6 @@
 import pytest
-from downloader.exceptions import MissingAuth
-from downloader.client import EpcClient
+from api.exceptions import MissingAuth
+from api.client import EpcClient
 import base64
 
 

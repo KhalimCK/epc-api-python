@@ -94,3 +94,6 @@ ENV/
 # Jetbrains/pycharm files
 .idea/
 pyvenv.cfg
+
+# DS store, created when opening with finder
+.DS_Store

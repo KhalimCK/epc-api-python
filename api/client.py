@@ -1,6 +1,6 @@
 import os
 import base64
-import downloader.exceptions as exceptions
+import api.exceptions as exceptions
 
 
 class EpcClient:

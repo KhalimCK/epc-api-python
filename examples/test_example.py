@@ -1,6 +1,6 @@
 import dotenv
 import requests
-from downloader.client import EpcClient
+from api.client import EpcClient
 
 dotenv.load_dotenv()
 
