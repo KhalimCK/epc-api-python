@@ -1,8 +1,8 @@
 EPC Data Exploration
 ========================
 
-Simple python library to extract and interact with EPC data api
-Api docs can be found [here](https://epc.opendatacommunities.org/docs/api/domestic)
+Simple python client to interfact with the EPC data API.
+API docs can be found [here](https://epc.opendatacommunities.org/docs/api/domestic)
 
 # Getting started
 

@@ -1,5 +1,5 @@
 import pytest
-from api.exceptions import MissingAuth
+from api.exceptions import MissingAuth, InvalidApiParameter
 from api.client import EpcClient
 import base64
 
@@ -54,3 +54,30 @@ def test_successful_init():
     # Check headers
     assert isinstance(client.headers, dict)
     assert set(client.headers.keys()) == {"Accept", "Authorization"}
+
+
+def test_invalid_accept():
+    # Test initialising the client with invalid accept value
+    test_user_email = "test@user.com"
+    test_api_key = "testapikey"
+
+    with pytest.raises(InvalidApiParameter) as _:
+        EpcClient(user_email=test_user_email, api_key=test_api_key, accept="invalid value")
+
+
+def test_correct_accept():
+    # Test initialising the client with any one of the correct accept values
+    test_user_email = "test@user.com"
+    test_api_key = "testapikey"
+
+    allowed_accept = [
+        "text/csv",
+        "application/json",
+        "application/zip",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ]
+
+    for acc in allowed_accept:
+        cl = EpcClient(user_email=test_user_email, api_key=test_api_key, accept=acc)
+        assert cl.headers["Accept"] == acc
