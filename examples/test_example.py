@@ -17,3 +17,5 @@ resp = requests.get(
     url=url,
     headers=client.headers,
 )
+
+search_resp = client.domestic.search(params={})

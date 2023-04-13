@@ -1,6 +1,7 @@
 import os
 import base64
 import requests
+from functools import partial
 import api.exceptions as exceptions
 
 
@@ -16,7 +17,7 @@ class EpcClient:
 
     host = "https://epc.opendatacommunities.org/api/{version}/{api_type}"
 
-    valid_versions = ("V1", )
+    valid_versions = ("v1", )
 
     def __init__(self, auth_token=None, user_email=None, api_key=None, accept=None, version=None):
         """
@@ -46,7 +47,7 @@ class EpcClient:
             # Defualt to application/json
             self._accept = "application/json"
 
-        self.version = version if version in self.valid_versions else "V1"
+        self.version = version if version in self.valid_versions else "v1"
 
         # Set up headers
         self._set_headers()
@@ -54,9 +55,9 @@ class EpcClient:
         # Insert version into host
         self._set_host()
 
-        # TODO: We should set this
-        # self.domestic = EpcResource(api_type="domestic")
-        # self.non_domestic = EpcResource(api_type="non-domestic")
+        # Set up domestic and non-domestic apis separately
+        self.domestic = EpcResource(api_type="domestic", host=self.host, headers=self.headers)
+        self.non_domestic = EpcResource(api_type="non-domestic", host=self.host, headers=self.headers)
 
     def set_auth_token(self, auth_token):
         if not auth_token:
@@ -103,7 +104,7 @@ class EpcClient:
         }
 
     def _set_host(self):
-        self.host = self.host.format(version=self.version)
+        self.host = partial(self.host.format, version=self.version)
 
 
 class EpcResource:
@@ -155,7 +156,7 @@ class EpcResource:
     # 3) https://epc.opendatacommunities.org/api/v1/{domestic/non-domestic}/recommendations/:lmk-key
     # Where :lmk-key is the LMK key of a certificate from a search result or download
     def __init__(self, api_type, host, headers):
-        self.host = host.format(api_type=api_type)
+        self.host = host(api_type=api_type)
         self.headers = headers
 
     @staticmethod
@@ -171,6 +172,12 @@ class EpcResource:
             headers=self.headers,
             params=params
         )
+
+        host = "https://epc.opendatacommunities.org/api/{version}/domestic".format(version="V1")
+
+        url = "/".join([host, "search"])
+
+        requests.get(url=url, headers=self.headers)
 
         # TODO: Handle api response given different error codes
         result = self._parse_response(response)
