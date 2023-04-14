@@ -1,6 +1,7 @@
-import pydantic
 from enum import Enum
 from typing import Optional
+
+import pydantic
 
 
 class PropertyType(str, Enum):
