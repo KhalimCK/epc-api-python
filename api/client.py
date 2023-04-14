@@ -191,7 +191,8 @@ class EpcResource:
             result = self._parse_response(response)
             return result
 
-        # TODO: Handle other status codes
+        if response.status_code == 404:
+            raise exceptions.NotFound("404 Response not found, no data available for this request")
 
     @staticmethod
     def _validate_params(params):
@@ -231,6 +232,13 @@ class EpcResource:
         """
         Function handles interaction with recommendations endpoint
         """
+
+        if self.headers["Accept"] == "application/zip":
+            raise exceptions.InvalidHeader(
+                "application/zip in an invalid mime value for /recommendations, initialise a new client with a "
+                "different header value"
+            )
+
         url = os.path.join(self.host, "recommendations", lmk_key)
 
         result = self.call(method="get", url=url, params={})
