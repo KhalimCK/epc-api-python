@@ -4,21 +4,21 @@ from typing import Optional
 
 
 class PropertyType(str, Enum):
-    bungalow: str
-    flat: str
-    house: str
-    maisonette: str
-    park_home: str = pydantic.Field(alias="park home")
+    bungalow = "bungalow"
+    flat = "flat"
+    house = "house"
+    maisonette = "maisonette"
+    park_home = "park home"
 
 
 class FloorArea(Enum):
-    unknown: str
-    s: str
-    m: str
-    l: str
-    xl: str
-    xxl: str
-    xxxl: str
+    unknown = "unknown"
+    s = "s"
+    m = "m"
+    l = "l"
+    xl = "xl"
+    xxl = "xxl"
+    xxxl = "xxxl"
 
 
 class EnergyBand(Enum):
@@ -43,3 +43,6 @@ class ParamSchema(pydantic.BaseModel):
     from_year: Optional[int] = pydantic.Field(None, ge=2008, alias="from-year")
     to_month: Optional[int] = pydantic.Field(None, ge=1, le=12, alias="to-month")
     to_year: Optional[int] = pydantic.Field(None, ge=2008, alias="to-year")
+
+    class Config:
+        extra = pydantic.Extra.forbid

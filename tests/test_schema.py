@@ -8,15 +8,15 @@ def test_complete_params():
 
     valid_params = {
         "postcode": "test",
-        "local_authority": "test",
+        "local-authority": "test",
         "constituency": "test",
-        "property_type": "bungalow",
-        "floor_area": "unknown",
-        "energy_band": "b",
-        "from_month": "1",
-        "from_year": "2010",
-        "to_month": "2",
-        "to_year": "2012",
+        "property-type": "bungalow",
+        "floor-area": "unknown",
+        "energy-band": "b",
+        "from-month": 1,
+        "from-year": 2010,
+        "to-month": 2,
+        "to-year": 2012,
     }
 
     res = ParamSchema(**valid_params)
@@ -27,7 +27,7 @@ def test_complete_params():
 
     invalid_params = {
         "postcode": "test",
-        "local_authority": "test",
+        "local-authority": "test",
         "constituency": "test",
         "propertytype": "BAD VALUE",
         "floor-area": "unknown",
@@ -39,3 +39,44 @@ def test_complete_params():
     }
     with pytest.raises(ValidationError):
         ParamSchema(**invalid_params)
+
+
+def test_partial_params():
+    # Test a partial parameter set which should valid
+
+    valid_params = {
+        "postcode": "test",
+        "floor-area": "unknown",
+        "energy-band": "xxxl",
+        "from-month": 3,
+        "to-month": 5,
+    }
+
+    res = ParamSchema(**valid_params)
+
+    assert isinstance(res, ParamSchema)
+
+    invalid_params = {
+        "postcode": "test",
+        "floor-area": "unknown",
+        "energy-band": "BAD",
+        "from-month": 3,
+        "to-month": 100,
+    }
+
+    with pytest.raises(ValidationError):
+        ParamSchema(**invalid_params)
+
+    invalid_extras = {
+        "not_a_value": 1
+    }
+
+    with pytest.raises(ValidationError):
+        ParamSchema(**invalid_extras)
+
+    valid_single = {
+        "property-type": "park home"
+    }
+    res = ParamSchema(**valid_single)
+
+    assert isinstance(res, ParamSchema)
