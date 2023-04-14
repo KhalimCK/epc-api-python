@@ -1,9 +1,9 @@
 import pydantic
 from enum import Enum
-from typing import Literal, Optional
+from typing import Optional
 
 
-class PropertyType(Enum):
+class PropertyType(str, Enum):
     bungalow: str
     flat: str
     house: str
