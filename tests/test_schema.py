@@ -74,9 +74,15 @@ def test_partial_params():
     with pytest.raises(ValidationError):
         ParamSchema(**invalid_extras)
 
-    valid_single = {
+    # Test a single value param dictionary where the value of the parameter has an alias
+    valid_single_alias = {
         "property-type": "park home"
     }
-    res = ParamSchema(**valid_single)
+    res = ParamSchema(**valid_single_alias)
 
+    assert isinstance(res, ParamSchema)
+
+    # We should be able to pass nothing
+    valid_empty = {}
+    res = ParamSchema(**valid_empty)
     assert isinstance(res, ParamSchema)
