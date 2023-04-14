@@ -22,13 +22,13 @@ class FloorArea(Enum):
 
 
 class EnergyBand(Enum):
-    a: str
-    b: str
-    c: str
-    d: str
-    e: str
-    f: str
-    g: str
+    a = "a"
+    b = "b"
+    c = "c"
+    d = "d"
+    e = "e"
+    f = "f"
+    g = "g"
 
 
 class ParamSchema(pydantic.BaseModel):

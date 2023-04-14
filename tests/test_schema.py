@@ -47,7 +47,7 @@ def test_partial_params():
     valid_params = {
         "postcode": "test",
         "floor-area": "unknown",
-        "energy-band": "xxxl",
+        "energy-band": "a",
         "from-month": 3,
         "to-month": 5,
     }
