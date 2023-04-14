@@ -179,7 +179,8 @@ class EpcResource:
         if self.headers["Accept"] == "application/json":
             return response.json()
 
-        return response
+        # For other headers, we take the simple approach and allow the user to parse as they wish
+        return response.content
 
     def call(self, method, url, params):
         response = getattr(requests, method)(

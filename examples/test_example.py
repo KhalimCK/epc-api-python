@@ -8,4 +8,6 @@ client = EpcClient(version="v1")
 
 search_resp = client.domestic.search(params={})
 
-address_search_resp = client.domestic.search(params={"postcode": "w6 9bf"})
+# Test csv accept response
+client = EpcClient(version="v1", accept="application/vnd.ms-excel")
+search_resp = client.domestic.search(params={})
