@@ -74,9 +74,9 @@ TODO
   - application/zip passed to recommendations endpoint [x]
   - Complete the coverage [x]
 - Adding paging parameters [x]
-- Write some decent documentation []
+- Write some decent documentation [x]
   - Specifically talk about how we handle the parsing of different Accept values (i.e. let the user parse the content and provide examples)
 - Document function decorators [x]
-- Write helper parsing functions []
-- Update examples to not use dotnev []
+- Update examples to not use dotnev [x]
+- Delete this todo list []
 - Publish []

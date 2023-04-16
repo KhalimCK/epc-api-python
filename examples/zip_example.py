@@ -1,12 +1,9 @@
-import dotenv
 from api.client import EpcClient
 import tempfile
 import os
 
-dotenv.load_dotenv()
-
 # I have auth_token in my environment
-client = EpcClient(version="v1", accept="application/zip")
+client = EpcClient(api_key="your api key", user_email="your email address", version="v1", accept="application/zip")
 
 response = client.domestic.search()
 

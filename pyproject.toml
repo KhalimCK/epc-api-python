@@ -1,0 +1,30 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epc-api-python"
+version = "1.0.0"
+description = "Interface the UK Govenment EPC api"
+readme = "README.md"
+authors = [{ name = "Khalim Conn-Kowlessar" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["dependencies", "dev"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements/prod.txt"]}
+
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+dev = {file = ["requirements/test.txt"]}
+
+[project.urls]
+Homepage = "https://github.com/KhalimCK/epc-api-python"
