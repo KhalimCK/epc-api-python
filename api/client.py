@@ -210,9 +210,18 @@ class EpcResource:
             )
         pass
 
-    def search(self, params=None, size=None, offset_from=None):
+    def search(self, params: dict = None, size: int = None, offset_from: int = None):
         """
         Function handles interaction with search endpoint
+        :param params:          dictionary of parameters that are passed to the /search url. More information on
+                                valid parameter values can be found in the api documentation at
+                                https://epc.opendatacommunities.org/docs/api/domestic for the domestic api and
+                                https://epc.opendatacommunities.org/docs/api/non-domestic for the non-domestic api
+        :param size:            The /search endpoint can be provided with a page size integer parameter which can
+                                be between 25 and 10000
+        :param offset_from:     offset_from is a typical offset parameter which if specified will fetch results after
+                                that positional index. For example, providing the value 1000 will fetch results after
+                                the 1000th record
 
         """
         params = {} if params is None else params
@@ -226,7 +235,7 @@ class EpcResource:
         result = self.call(method="get", url=url, params=params)
         return result
 
-    def certificate(self, lmk_key):
+    def certificate(self, lmk_key: str):
         """
         Function handles interaction with certificate endpoint
         :param lmk_key: lmk-key is the LMK key of a certificate from a search result or download
@@ -237,7 +246,7 @@ class EpcResource:
         result = self.call(method="get", url=url, params={})
         return result
 
-    def recommendations(self, lmk_key):
+    def recommendations(self, lmk_key: str):
         """
         Function handles interaction with recommendations endpoint
         :param lmk_key: lmk-key is the LMK key of a certificate from a search result or download
