@@ -23,3 +23,12 @@ class InvalidHeader(Exception):
     """
 
     pass
+
+
+class Unauthorized(Exception):
+
+    """
+    Raise when 401 is returned by the api
+    """
+
+    pass

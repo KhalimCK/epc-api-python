@@ -4,6 +4,7 @@ from functools import partial
 from pydantic.error_wrappers import ValidationError
 
 import requests
+from urllib.parse import urlencode
 
 import api.exceptions as exceptions
 from api.schemas import ParamSchema
@@ -194,6 +195,9 @@ class EpcResource:
         if response.status_code == 404:
             raise exceptions.NotFound("404 Response not found, no data available for this request")
 
+        if response.status_code == 401:
+            raise exceptions.Unauthorized("401 Unauthorized to %s" % url)
+
     @staticmethod
     def _validate_params(params):
 
@@ -205,14 +209,18 @@ class EpcResource:
             print("Parameter error: %s" % str(e))
         return False
 
-    def search(self, params):
+    def search(self, params=None, size=None, offset_from=None):
         """
         Function handles interaction with search endpoint
+
         """
+        params = {} if params is None else params
         # Search method can be supplied with parameters, we validate them here
         self._validate_params(params)
 
         url = os.path.join(self.host, "search")
+        if size or offset_from:
+            url += "?" + urlencode({k: v for k, v in {"size": size, "from": offset_from}.items() if v})
 
         result = self.call(method="get", url=url, params=params)
         return result
@@ -231,6 +239,7 @@ class EpcResource:
     def recommendations(self, lmk_key):
         """
         Function handles interaction with recommendations endpoint
+        :param lmk_key: lmk-key is the LMK key of a certificate from a search result or download
         """
 
         if self.headers["Accept"] == "application/zip":

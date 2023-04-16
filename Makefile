@@ -3,4 +3,4 @@ init:
 
 test:
 	pip install -r requirements/test.txt
-	pytest --cov-report term --cov=api tests/
+	pytest --cov-report term-missing --cov=api tests/
