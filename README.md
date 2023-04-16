@@ -66,7 +66,7 @@ The client can be set up with multiple mime types, with the default value being
 `application/json`. If this value is supplied, the json data is parsed and returned in a 
 list/dictionary format, however for other mime types, the user is presented the 
 content back and it's up to the user to parse the response in a suitable
-fashion. There are some helper functions which can be used to parse the response.
+fashion. Some examples of handling different mime types of have provided in `/examples`.
 
 TODO
 - Parse different response types [x]
@@ -78,4 +78,5 @@ TODO
   - Specifically talk about how we handle the parsing of different Accept values (i.e. let the user parse the content and provide examples)
 - Document function decorators [x]
 - Write helper parsing functions []
+- Update examples to not use dotnev []
 - Publish []
