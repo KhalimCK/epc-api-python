@@ -1,7 +1,6 @@
 import pytest
 from api.client import EpcClient
-from api.exceptions import InvalidHeader, Unauthorized
-from requests.exceptions import ConnectionError
+from api.exceptions import InvalidHeader, Unauthorized, InvalidApiParameter
 
 
 def test_recommendations_with_application_zip():
@@ -54,3 +53,41 @@ def test_search():
     # Check the url set up correctly
     assert err.value.args[0] == \
         '401 Unauthorized to https://epc.opendatacommunities.org/api/v1/domestic/search?size=1337&from=1337'
+
+
+def test_search_params():
+    test_user_email = "test@user.com"
+    test_api_key = "testapikey"
+
+    client = EpcClient(user_email=test_user_email, api_key=test_api_key, accept="application/zip")
+
+    with pytest.raises(InvalidApiParameter):
+        client.domestic.search(params={"bad": "bad"})
+
+
+def test_certificate():
+    test_user_email = "test@user.com"
+    test_api_key = "testapikey"
+
+    client = EpcClient(user_email=test_user_email, api_key=test_api_key, accept="application/zip")
+
+    with pytest.raises(Unauthorized) as err:
+        client.domestic.certificate(lmk_key="test_lmk_key")
+
+    # Check the url set up correctly
+    assert err.value.args[0] == \
+        '401 Unauthorized to https://epc.opendatacommunities.org/api/v1/domestic/certificate/test_lmk_key'
+
+
+def test_recommendations():
+    test_user_email = "test@user.com"
+    test_api_key = "testapikey"
+
+    client = EpcClient(user_email=test_user_email, api_key=test_api_key)
+
+    with pytest.raises(Unauthorized) as err:
+        client.domestic.recommendations(lmk_key="test_lmk_key")
+
+    # Check the url set up correctly
+    assert err.value.args[0] == \
+        '401 Unauthorized to https://epc.opendatacommunities.org/api/v1/domestic/recommendations/test_lmk_key'

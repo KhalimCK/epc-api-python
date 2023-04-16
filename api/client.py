@@ -203,11 +203,12 @@ class EpcResource:
 
         try:
             ParamSchema(**params)
-            return True
-        except ValidationError as e:
-            print("Invalid parameter passed")
-            print("Parameter error: %s" % str(e))
-        return False
+        except ValidationError as _:
+            # We handle the error and raise a simple error
+            raise exceptions.InvalidApiParameter(
+                "Invalid parameter passed, check api documentation for valid parameters"
+            )
+        pass
 
     def search(self, params=None, size=None, offset_from=None):
         """

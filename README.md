@@ -10,10 +10,9 @@ TODO
 - Parse different response types [x]
 - Tests
   - application/zip passed to recommendations endpoint [x]
-  - Complete the coverage
-- Adding paging parameters []
+  - Complete the coverage []
+- Adding paging parameters [x]
 - Write some decent documentation []
   - Specifically talk about how we handle the parsing of different Accept values (i.e. let the user parse the content and provide examples)
-- Document function decorators
-  
+- Document function decorators []
 - Publish []
