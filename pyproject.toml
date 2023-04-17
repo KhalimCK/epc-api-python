@@ -18,12 +18,10 @@ classifiers = [
 ]
 dynamic = ["dependencies"]
 requires-python = ">=3.7"
+keywords = ["epc_api"]
 
-[tool.setuptools.packages.find]
-where = ["epc_api"]
-include = []
-namespaces = false
-
+[tool.setuptools]
+packages = ["epc_api"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements/prod.txt"]}

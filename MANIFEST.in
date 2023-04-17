@@ -1,2 +1,3 @@
-include LICENSE epc_api_python/*
+include LICENSE
+recursive-include epc_api *.py
 recursive-include examples *.py
