@@ -20,7 +20,7 @@ dynamic = ["dependencies"]
 requires-python = ">=3.7"
 
 [tool.setuptools.packages.find]
-where = ["api"]
+where = ["epc_api"]
 include = []
 namespaces = false
 
