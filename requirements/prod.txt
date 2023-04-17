@@ -1,4 +1,4 @@
 nose
 sphinx
-pydantic~=1.10.7
-requests~=2.28.2
+pydantic>=1.10.7
+requests>=2.28.2

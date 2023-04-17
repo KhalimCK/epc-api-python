@@ -24,7 +24,26 @@ dependencies = {file = ["requirements/prod.txt"]}
 requires-python = ">=3.9"
 
 [project.optional-dependencies]
-dev = {file = ["requirements/test.txt"]}
+dev = ["pytest>=6.2.3", "pytest-cov>=4.0.0", "black>=19.10b0", "isort", "prospector"]
 
 [project.urls]
 Homepage = "https://github.com/KhalimCK/epc-api-python"
+
+
+[tool.bumpver]
+current_version = "1.0.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+]
+"README.md" = [
+    "{version}",
+    "{pep440_version}",
+]
+
