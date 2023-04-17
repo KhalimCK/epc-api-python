@@ -25,7 +25,7 @@ To set up the api import the `EpcClient` class an initialise the client by tunni
 
 ```commandline
 import dotenv
-from api.client import EpcClient
+from epc_api.client import EpcClient
 
 your_email = "email you signed up with"
 api_key = "api you were emailed after sign up"
