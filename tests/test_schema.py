@@ -1,5 +1,5 @@
 import pytest
-from api.schemas import ParamSchema
+from epc_api_python.schemas import ParamSchema
 from pydantic.error_wrappers import ValidationError
 
 

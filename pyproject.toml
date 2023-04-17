@@ -16,12 +16,17 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
-dynamic = ["dependencies", "dev"]
+dynamic = ["dependencies"]
+requires-python = ">=3.7"
+
+[tool.setuptools.packages.find]
+where = ["api"]
+include = []
+namespaces = false
+
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements/prod.txt"]}
-
-requires-python = ">=3.9"
 
 [project.optional-dependencies]
 dev = ["pytest>=6.2.3", "pytest-cov>=4.0.0", "black>=19.10b0", "isort", "prospector"]

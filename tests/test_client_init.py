@@ -1,6 +1,6 @@
 import pytest
-from api.exceptions import MissingAuth, InvalidApiParameter
-from api.client import EpcClient
+from epc_api_python.exceptions import MissingAuth, InvalidApiParameter
+from epc_api_python.client import EpcClient
 import base64
 
 
@@ -23,7 +23,7 @@ def test_successful_init_auth_token():
 
 
 def test_failed_init_just_email():
-    # Just user email supplied, needs api key
+    # Just user email supplied, needs epc_api_python key
     test_user_email = "test@user.com"
 
     with pytest.raises(MissingAuth) as _:
@@ -31,7 +31,7 @@ def test_failed_init_just_email():
 
 
 def test_failed_init_just_api_key():
-    # Just user email supplied, needs api key
+    # Just user email supplied, needs epc_api_python key
     test_api_key = "testapikey"
 
     with pytest.raises(MissingAuth) as _:

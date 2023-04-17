@@ -1,10 +1,10 @@
 import os
 
 import tempfile
-from api.client import EpcClient
+from epc_api_python.client import EpcClient
 
 # I have auth_token in my environment
-client = EpcClient(api_key="your api key", user_email="your email address", version="v1", accept="text/csv")
+client = EpcClient(api_key="your epc_api_python key", user_email="your email address", version="v1", accept="text/csv")
 
 response = client.domestic.search()
 

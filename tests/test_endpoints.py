@@ -1,6 +1,6 @@
 import pytest
-from api.client import EpcClient
-from api.exceptions import InvalidHeader, Unauthorized, InvalidApiParameter
+from epc_api_python.client import EpcClient
+from epc_api_python.exceptions import InvalidHeader, Unauthorized, InvalidApiParameter
 
 
 def test_recommendations_with_application_zip():
@@ -20,7 +20,7 @@ def test_search():
     test_user_email = "test@user.com"
     test_api_key = "testapikey"
 
-    # We do not expect this test to actually pass and hit the api, however we
+    # We do not expect this test to actually pass and hit the epc_api_python, however we
     # make sure the client has been set up correctly
 
     client = EpcClient(user_email=test_user_email, api_key=test_api_key)

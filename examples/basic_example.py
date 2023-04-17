@@ -1,7 +1,7 @@
-from api.client import EpcClient
+from epc_api_python.client import EpcClient
 
 # I have auth_token in my environment
-client = EpcClient(version="v1", api_key="your api key", user_email="your email address")
+client = EpcClient(version="v1", api_key="your epc_api_python key", user_email="your email address")
 
 search_resp = client.domestic.search(params={})
 print(search_resp)
