@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "epc-api-python"
+version = "1.0.2"
 description = "Interface the UK Govenment EPC api"
 readme = "README.md"
 authors = [{ name = "Khalim Conn-Kowlessar" }]
