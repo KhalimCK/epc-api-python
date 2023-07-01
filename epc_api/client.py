@@ -149,6 +149,9 @@ class EpcResource:
         Given a successful response, this function parses the returned values
         """
         if self.headers["Accept"] == "application/json":
+            if not response.text:
+                # If we get an empty response, we return an empty object
+                return {}
             return response.json()
 
         # For other headers, we take the simple approach and allow the user to parse as they wish
